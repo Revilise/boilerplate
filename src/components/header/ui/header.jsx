@@ -10,7 +10,7 @@ export const Header = () => {
          </div>
 
          <div className={"header__extraLinks"}>
-           <a className={"header__extraLink"} href={"https://github.com/Revilise/static-generator"}>
+           <a className={"header__extraLink"} href={"https://github.com/Revilise/boilerplate"}>
              <span>github.com</span>
              <Icon src={"github"} />
            </a>
