@@ -27,7 +27,7 @@ class Symbol {
     const height = root.getAttribute("height");
     const width = root.getAttribute("width");
 
-    const attrs = `id="${this.id}" viewBox="${viewBox}"${height && ` height="${height}"`}${width && ` width="${width}"`}`
+    const attrs = `id="${this.id}" viewBox="${viewBox}"`
 
     this.html = parse(`<symbol ${attrs}>${root.childNodes.join('')}</symbol>`);
     this.height = height;
@@ -60,9 +60,9 @@ class SpriteBundler {
   }
 
   async bundle() {
-
-    await fs.readdir(this.options.iconsFolder, (err?: (NodeJS.ErrnoException), files?: string[]) => {
+   fs.readdir(this.options.iconsFolder, (err?: NodeJS.ErrnoException, files?: string[]) => {
       if (err) return console.log(err);
+
       const symbols = this.#extractSymbols(files.filter(file => this.options.svgTest.test(file)));
       const cssText = this.#generateCss(symbols);
       const svgText = this.#generateSvg(symbols);

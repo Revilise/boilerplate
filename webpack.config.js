@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const {glob} = require("glob");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -12,9 +13,7 @@ const DIST = "./dist";
 
 const RenderHtmlPages = (pages) => pages.map(page => (
    new HtmlWebpackPlugin({
-     filename: () => {
-       return `${page}.html`
-     },
+     filename: () => `${page}.html`,
      template: `./${SOURCE}/pages/${page}.jsx`,
      inject: true,
      minify: {
@@ -29,17 +28,22 @@ const RenderHtmlPages = (pages) => pages.map(page => (
    })
 ));
 
-module.exports = (env, argv) => {
+const getEntries = async (tests) => {
+  const filenames = tests.map(test => glob(test));
+  return (await Promise.all(filenames)).flat().map(filename => `./${filename}`);
+}
+
+module.exports = async (env, argv) => {
   const isProd = argv.mode === 'production';
   const pages = (env.PAGES || "index").split(",").map((page) => page.trim());
+  const styles = await getEntries(["src/**/*.pcss", "src/**/*.css"]);
   const useAnalyzer = env.ANALYZER === "true";
-
-  console.log(isProd)
 
   return {
     mode: argv.mode,
     entry: [
-       ...pages.map((page) => `${SOURCE}/pages/${page}.jsx`)
+       ...pages.map((page) => `${SOURCE}/pages/${page}.jsx`),
+       ...styles,
     ],
     node: {
       __dirname: true,

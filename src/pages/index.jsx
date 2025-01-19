@@ -6,11 +6,11 @@ import {Section} from "@/components/section";
 const pages = [
   {
     label: "Main page",
-    href: "/main.html"
+    href: "./main.html"
   },
   {
     label: "Page 1",
-    href: "/page1.html"
+    href: "./page1.html"
   }
 ]
 
