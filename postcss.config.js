@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    "cssnano",
     "postcss-flexbugs-fixes",
     [
       "@csstools/postcss-global-data",

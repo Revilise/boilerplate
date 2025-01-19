@@ -34,6 +34,8 @@ module.exports = (env, argv) => {
   const pages = (env.PAGES || "index").split(",").map((page) => page.trim());
   const useAnalyzer = env.ANALYZER === "true";
 
+  console.log(isProd)
+
   return {
     mode: argv.mode,
     entry: [
@@ -79,6 +81,7 @@ module.exports = (env, argv) => {
       open: pages.map(page => `/${page}.html`)
     },
     optimization: {
+      minimize: true,
       runtimeChunk: 'single',
       splitChunks: {
         cacheGroups:  {
@@ -91,7 +94,9 @@ module.exports = (env, argv) => {
       }
     },
     plugins: [
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css'
+      }),
       new CopyPlugin({
         patterns: [
           {
