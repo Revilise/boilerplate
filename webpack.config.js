@@ -11,6 +11,8 @@ const SOURCE = "./src";
 const PUBLIC = "./public";
 const DIST = "./dist";
 
+const CORE = `${SOURCE}/lib/index.js`;
+
 const RenderHtmlPages = (pages) => pages.map(page => (
    new HtmlWebpackPlugin({
      filename: () => `${page}.html`,
@@ -42,6 +44,7 @@ module.exports = async (env, argv) => {
   return {
     mode: argv.mode,
     entry: [
+      CORE,
        ...pages.map((page) => `${SOURCE}/pages/${page}.jsx`),
        ...styles,
     ],
