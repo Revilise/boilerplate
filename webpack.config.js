@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const SOURCE = "./src";
 const PUBLIC = "./public";
@@ -18,15 +20,7 @@ const RenderHtmlPages = (pages) => pages.map(page => (
      filename: () => `${page}.html`,
      template: `./${SOURCE}/pages/${page}.jsx`,
      inject: true,
-     minify: {
-       collapseWhitespace: false,
-       keepClosingSlash: true,
-       removeComments: true,
-       removeRedundantAttributes: false,
-       removeScriptTypeAttributes: false,
-       removeStyleLinkTypeAttributes: false,
-       useShortDoctype: true
-     },
+     minify: true,
    })
 ));
 
@@ -35,19 +29,28 @@ const getEntries = async (tests) => {
   return (await Promise.all(filenames)).flat().map(filename => `./${filename}`);
 }
 
+const getPages = async (envPages) => {
+  if (envPages === "*") {
+    const filenames = await glob(`${SOURCE}/pages/**.jsx`);
+    return filenames.map(filename => filename.match(/\w+(?=\.jsx)/gm)[0]);
+  }
+
+  return envPages.split(",").map(page => page.trim());
+}
+
 module.exports = async (env, argv) => {
   const isProd = argv.mode === 'production';
-  const pages = (env.PAGES || "index").split(",").map((page) => page.trim());
+  const pages = await getPages(env.PAGES);
   const styles = await getEntries(["src/**/*.pcss", "src/**/*.css"]);
   const useAnalyzer = env.ANALYZER === "true";
 
+  const ENTRY = {
+    bundle: styles.concat([CORE]),
+  }
+
   return {
     mode: argv.mode,
-    entry: [
-      CORE,
-       ...pages.map((page) => `${SOURCE}/pages/${page}.jsx`),
-       ...styles,
-    ],
+    entry: ENTRY,
     node: {
       __dirname: true,
     },
@@ -80,7 +83,7 @@ module.exports = async (env, argv) => {
       }
     },
     output: {
-      filename: "js/[name].bundle.js",
+      filename: "js/[name].js",
       path: path.resolve(__dirname, DIST),
       clean: true,
     },
@@ -88,8 +91,11 @@ module.exports = async (env, argv) => {
       open: pages.map(page => `/${page}.html`)
     },
     optimization: {
+      minimizer: [
+         new CssMinimizerPlugin(),
+         new TerserPlugin(),
+      ],
       minimize: true,
-      runtimeChunk: 'single',
       splitChunks: {
         cacheGroups:  {
           vendor: {
@@ -102,7 +108,7 @@ module.exports = async (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'css/[name].css'
+        filename: 'css/[name].css',
       }),
       new CopyPlugin({
         patterns: [

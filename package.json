@@ -5,9 +5,9 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "build:fast": "npx webpack --mode production --env PAGES=index,main,page1",
-    "build": "npx webpack --mode production --env PAGES=index --env ANALYZER=true",
-    "dev": "npx webpack serve --mode development --env PAGES=main",
+    "build:fast": "npx webpack --mode production --env PAGES=*",
+    "build": "npx webpack --mode production --env PAGES=* --env ANALYZER=true",
+    "dev": "npx webpack serve --mode development --env PAGES=ui",
     "sprites": "npx tsx sprite.mts"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "clsx": "^2.1.1",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.0",
     "cssnano": "^7.0.6",
     "glob": "^11.0.1",
     "html-webpack-plugin": "^5.6.3",
@@ -48,5 +49,8 @@
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
+  },
+  "engines": {
+    "node": "22"
   }
 }

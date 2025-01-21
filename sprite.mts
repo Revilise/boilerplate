@@ -83,7 +83,7 @@ class SpriteBundler {
 
   #generateCss(symbols: Symbol[]) {
     return `/* this file is generated with npm run sprite */\n` +
-       symbols.map(({ id, width, height }) => `.${id} {\n  width: ${width};\n  height: ${height};\n}`).join('\n')
+       symbols.map(({ id, width, height }) => `.${id} {\n  width: ${width}px;\n  height: ${height}px;\n}`).join('\n')
   }
 
   #generateSvg(symbols: Symbol[]) {

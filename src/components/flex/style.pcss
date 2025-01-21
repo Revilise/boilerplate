@@ -1,0 +1,16 @@
+.flex {
+  --flexDisplay: flex;
+  --flexDirection: row;
+  --flexJustifyContent: unset;
+  display: var(--flexDisplay);
+  flex-direction: var(--flexDirection);
+  justify-content: var(--flexJustifyContent);
+  
+  &--column {
+    --flexDirection: column;
+  }
+  
+  &--justifyCenter {
+    --flexJustifyContent: center;
+  }
+}
