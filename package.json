@@ -1,7 +1,7 @@
 {
-  "name": "static-generator",
+  "name": "revilise-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "frontend boilerplate",
   "license": "ISC",
   "author": "",
   "scripts": {
@@ -11,8 +11,10 @@
     "sprites": "npx tsx sprite.mts"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "bootstrap": "^5.3.3",
     "cross-env": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

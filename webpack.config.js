@@ -70,13 +70,16 @@ module.exports = async (env, argv) => {
           ]
         },
         {
+
+        },
+        {
           test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
           type: "asset/resource",
         }
       ]
     },
     resolve: {
-      extensions: ['.ts', '.tsx', ".js", ".jsx", ".pcss", ".css"],
+      extensions: ['.ts', '.tsx', ".js", ".jsx", ".pcss", ".css", ".scss"],
       alias: {
         "@": path.resolve(__dirname, SOURCE),
         "@/public": path.resolve(__dirname, PUBLIC),
@@ -119,7 +122,8 @@ module.exports = async (env, argv) => {
         ]
       }),
       new webpack.ProvidePlugin({
-        React: 'react'
+        React: "react",
+        bootstrap: "bootstrap",
       }),
       ...RenderHtmlPages(pages),
       useAnalyzer && new BundleAnalyzerPlugin(),
