@@ -1,7 +1,6 @@
 import { Document } from "@/components/document";
 import { render } from "@/lib/render";
 import { RootLayout } from "@/components/rootLayout";
-import { Section } from "@/components/section";
 import { Swiper } from "@/components/swiper";
 
 const title = "Main page"
@@ -10,7 +9,7 @@ export default render(() => {
   return (
      <Document title={title}>
        <RootLayout>
-         <Section headerSlot={<h1>LOOK AT THIS SWIPER!</h1>}>
+         <div>
             <Swiper toolbar={{ pagination: true }} name={"boilerplate-info-swiper"}>
               <Swiper.Slide>
                 <div>

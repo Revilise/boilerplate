@@ -1,7 +1,6 @@
 import { render } from "@/lib/render";
 import { Document } from "@/components/document";
 import {RootLayout} from "@/components/rootLayout";
-import {Section} from "@/components/section";
 
 const pages = [
   {
@@ -18,7 +17,7 @@ export default render(() => {
   return (
      <Document>
        <RootLayout>
-         <Section headerSlot={<h1>Your renders:</h1>}>
+         <div>
            <ul>
              {pages.map(({label, href}, idx) => (
                 <li key={`ul-li${idx}`}>
@@ -26,7 +25,7 @@ export default render(() => {
                 </li>
              ))}
            </ul>
-         </Section>
+         </div>
        </RootLayout>
      </Document>
   )

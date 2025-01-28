@@ -62,11 +62,12 @@ module.exports = async (env, argv) => {
           use: 'babel-loader'
         },
         {
-          test: /\.(pcss|css)$/,
+          test: /\.(pcss|css|scss|sass)$/,
           use: [
             isProd ? MiniCssExtractPlugin.loader : "style-loader",
             "css-loader",
             "postcss-loader",
+            "sass-loader"
           ]
         },
         {
@@ -76,7 +77,7 @@ module.exports = async (env, argv) => {
       ]
     },
     resolve: {
-      extensions: ['.ts', '.tsx', ".js", ".jsx", ".pcss", ".css"],
+      extensions: ['.ts', '.tsx', ".js", ".jsx", ".pcss", ".css", ".scss"],
       alias: {
         "@": path.resolve(__dirname, SOURCE),
         "@/public": path.resolve(__dirname, PUBLIC),
@@ -119,7 +120,8 @@ module.exports = async (env, argv) => {
         ]
       }),
       new webpack.ProvidePlugin({
-        React: 'react'
+        React: "react",
+        bootstrap: "bootstrap",
       }),
       ...RenderHtmlPages(pages),
       useAnalyzer && new BundleAnalyzerPlugin(),

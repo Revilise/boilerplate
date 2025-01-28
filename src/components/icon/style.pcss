@@ -1,8 +1,16 @@
-svg.icon {
+.icon {
   --iconSize: 4rem;
   display: block;
   fill: currentColor;
   transition: fill .2s;
-  height: var(--iconSize);
-  width: var(--iconSize);
+  height: var(--iconSize) !important;
+  width: var(--iconSize) !important;
+  
+  &--size16 {
+    --iconSize: 2rem;
+  }
+  
+  &--size24 {
+    --iconSize: 3rem;
+  }
 }
