@@ -41,7 +41,7 @@ const getPages = async (envPages) => {
 module.exports = async (env, argv) => {
   const isProd = argv.mode === 'production';
   const pages = await getPages(env.PAGES);
-  const styles = await getEntries(["src/**/*.pcss", "src/**/*.css"]);
+  const styles = await getEntries(["src/**/*.pcss", "src/**/*.css", "src/**/*.scss"]);
   const useAnalyzer = env.ANALYZER === "true";
 
   const ENTRY = {
