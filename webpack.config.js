@@ -71,9 +71,6 @@ module.exports = async (env, argv) => {
           ]
         },
         {
-
-        },
-        {
           test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
           type: "asset/resource",
         }

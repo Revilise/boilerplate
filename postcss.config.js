@@ -1,10 +1,12 @@
 module.exports = {
-  parser: "postcss-scss",
   plugins: [
     "cssnano",
     "postcss-flexbugs-fixes",
     [
       "@csstools/postcss-global-data",
+      {
+        files: ["./src/components/document/style/mq.pcss"],
+      },
     ],
     "postcss-nested",
     "postcss-custom-media",
