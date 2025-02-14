@@ -11,7 +11,7 @@ export default render(() => {
      <Document title={title}>
        <RootLayout>
          <Section headerSlot={<h1>LOOK AT THIS SWIPER!</h1>}>
-            <Swiper toolbar={{ pagination: true }} name={"boilerplate-info-swiper"}>
+            <Swiper name={"boilerplate-info-swiper"}>
               <Swiper.Slide>
                 <div>
                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean

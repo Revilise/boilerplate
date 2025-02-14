@@ -24,22 +24,11 @@ export class Collection {
   constructor(selector: string, collectionItem: (typeof CollectionItem)) {
     this.selector = selector;
     this.#collectInstances(collectionItem);
-    this.#injectToPublicCore();
   }
 
   selector: string = "";
 
   collection: CollectionItem[] = [];
-
-  #injectToPublicCore() {
-    if (this.constructor?.isPublic) {
-      if (!window.Core) {
-        window.Core = {} as { [key: string]: Collection };
-      }
-
-      window.Core[this.constructor.name] = this;
-    }
-  }
 
   #collectInstances(collectionItem: (typeof CollectionItem)) {
     document
@@ -48,5 +37,9 @@ export class Collection {
          const item = new collectionItem(element, this.selector);
          this.collection.push(item)
        })
+  }
+
+  isConnected(htmlElement: HTMLElement) {
+    return !!this.collection.find(plugin => plugin.instance === htmlElement);
   }
 }

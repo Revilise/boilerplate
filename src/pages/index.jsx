@@ -1,7 +1,7 @@
 import { render } from "@/lib/render";
 import { Document } from "@/components/document";
-import {RootLayout} from "@/components/rootLayout";
-import {Section} from "@/components/section";
+import { RootLayout } from "@/components/rootLayout";
+import { Section } from "@/components/section";
 
 const pages = [
   {

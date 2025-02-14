@@ -2,6 +2,16 @@ import clsx from "clsx";
 import { SwiperSlide } from "./swiperSlide";
 import {SwiperPagination} from "@/components/swiper/ui/swiperPagination";
 
+/**
+ *
+ * @param extraClasses{Object}
+ * @param name{string}
+ * @param children{JSX.Element}
+ * @param toolbar{object}
+ * @param toolbar.pagination{object}
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export const Swiper = ({
   extraClasses = {},
   name = "",
