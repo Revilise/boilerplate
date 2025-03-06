@@ -16,6 +16,6 @@
       "@/public*": [ "./public/*" ]
     },
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js"],
   "exclude": ["node_modules"],
 }

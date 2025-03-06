@@ -13,7 +13,7 @@ const SOURCE = "./src";
 const PUBLIC = "./public";
 const DIST = "./dist";
 
-const CORE = `${SOURCE}/lib/index.js`;
+const CORE = `${SOURCE}/app/index.js`;
 
 const RenderHtmlPages = (pages) => pages.map(page => (
    new HtmlWebpackPlugin({
@@ -64,7 +64,7 @@ module.exports = async (env, argv) => {
         {
           test: /\.(pcss|css)$/,
           use: [
-            isProd ? MiniCssExtractPlugin.loader : "style-loader",
+            MiniCssExtractPlugin.loader,
             "css-loader",
             "postcss-loader",
           ]
@@ -123,6 +123,6 @@ module.exports = async (env, argv) => {
       }),
       ...RenderHtmlPages(pages),
       useAnalyzer && new BundleAnalyzerPlugin(),
-    ]
+    ],
   }
 }

@@ -1,8 +1,9 @@
-import { render } from "@/lib/render";
+import { render } from "@/shared/lib/render";
 
-export default render(() => {
+const Page = () => {
   return (
-     <h1 style={{ padding: "32px" }}>Welcome to empty page example</h1>
+     <h1 style={{padding: "32px"}}>Welcome to empty page example</h1>
   )
-})
+}
 
+export default render(Page);

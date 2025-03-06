@@ -5,7 +5,7 @@ module.exports = {
     [
       "@csstools/postcss-global-data",
       {
-        files: ["./src/components/document/style/mq.pcss"],
+        files: ["./src/app/style/mq.pcss"],
       },
     ],
     "postcss-nested",

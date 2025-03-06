@@ -1,0 +1,44 @@
+.modal {
+  --modal-width: var(--gridWidth);
+  --modal-height: fit-content;
+  --modal-inset: 0;
+  --modal-margin: auto;
+  --modal-padding: 2.5rem;
+  --modal-borderRadius: 2.5rem;
+  --modal-borderColor: transparent;
+  --modal-borderWidth: 0;
+  
+  position: fixed;
+  width: var(--modal-width);
+  height: var(--modal-height);
+  inset: var(--modal-inset);
+  margin: var(--modal-margin);
+  padding: var(--modal-padding);
+  border-radius: var(--modal-borderRadius);
+  border-color: var(--modal-borderColor);
+  border-width: var(--modal-borderWidth);
+  transition: opacity .5s, display .3s, overlay .2s;
+  
+  &::backdrop {
+    background-color: var(--transparentBlack50);
+  }
+  
+  &:popover-open {
+    scale: 1;
+    opacity: 1;
+    transition: opacity .3s, scale .3s, display .3s, overlay .2s;
+  }
+  
+  &:not(:popover-open) {
+    scale: 0;
+    opacity: 0;
+    transition: opacity .3s, scale .3s, display .2s, overlay .2s;
+  }
+}
+
+@starting-style {
+  .modal:popover-open {
+    opacity: 0;
+    scale: 0;
+  }
+}

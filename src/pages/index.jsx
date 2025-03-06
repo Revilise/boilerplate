@@ -1,7 +1,7 @@
-import { render } from "@/lib/render";
-import { Document } from "@/components/document";
-import { RootLayout } from "@/components/rootLayout";
-import { Section } from "@/components/section";
+import { render } from "@/shared/lib/render";
+import { Document } from "@/shared/ui/document";
+import { RootLayout } from "@/shared/ui/rootLayout";
+import { Section } from "@/shared/ui/section";
 
 const pages = [
   {
@@ -14,7 +14,7 @@ const pages = [
   }
 ]
 
-export default render(() => {
+const Page = () => {
   return (
      <Document>
        <RootLayout>
@@ -30,4 +30,6 @@ export default render(() => {
        </RootLayout>
      </Document>
   )
-})
+}
+
+export default render(Page)
