@@ -69,7 +69,6 @@ export class ModalSingleton extends Singleton {
 
   #handleDocOnClick(event) {
     const attr = getAttr(ModalSingleton.selectors.target);
-    console.log(event.target);
 
     if (event.target.getAttribute(attr)) {
       const cfg = getCfg(event.target, ModalSingleton.selectors.target, ModalSingleton.targetDefaultCfg);
