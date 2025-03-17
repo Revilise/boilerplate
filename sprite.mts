@@ -106,7 +106,7 @@ class SpriteBundler {
 const cfg = {
   svgTest:  /icon-.+\.svg$/,
   iconsFolder: "./public/assets/icons",
-  outputCss: "./src/components/document/style",
+  outputCss: "./src/app/style",
 }
 
 new SpriteBundler(cfg).bundle();

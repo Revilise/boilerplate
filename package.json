@@ -5,9 +5,9 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "build:fast": "npx webpack --mode production --env PAGES=main",
+    "build:fast": "npx webpack --mode production --env PAGES=index",
     "build": "npx webpack --mode production --env PAGES=* --env ANALYZER=true",
-    "dev": "npx webpack serve --mode development --env PAGES=main",
+    "dev": "npx webpack serve --mode development --env PAGES=index",
     "sprites": "npx tsx sprite.mts"
   },
   "dependencies": {

@@ -1,34 +1,14 @@
-@font-face {
-  font-family: "Gilroy";
-  src: local("Gilroy"),
-  url(" ../../../public/fonts/gilroy/Gilroy-Regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Gilroy";
-  src: local("Gilroy"),
-  url("../../../public/fonts/gilroy/Gilroy-Bold.woff") format("woff");
-  font-weight: 600;
-}
+/*
+ * Typography.
+ * Connect fonts and determine common font styles.
+*/
 
 html {
-  font-size: 8px;
+  font-size: 8px; /* determine size of rem unit. */
 }
 
 body {
   font-family: "Gilroy", sans-serif;
   font-size: 2rem;
   line-height: 2.75rem;
-  color: var(--colorEerieBlack);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all .2s;
-  
-  &:hover {
-    text-decoration: underline;
-  }
 }

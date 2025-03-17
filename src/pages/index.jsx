@@ -5,13 +5,9 @@ import { Section } from "@/shared/ui/section";
 
 const pages = [
   {
-    label: "Main page",
-    href: "./main.html"
+    label: "Index page",
+    href: "./index.html"
   },
-  {
-    label: "Page 1",
-    href: "./page1.html"
-  }
 ]
 
 const Page = () => {
