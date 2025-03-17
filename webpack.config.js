@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const {glob} = require("glob");
 
+const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -107,6 +108,7 @@ module.exports = async (env, argv) => {
       }
     },
     plugins: [
+      new DotEnv(),
       new MiniCssExtractPlugin({
         filename: 'css/[name].css',
       }),
