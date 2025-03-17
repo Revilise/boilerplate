@@ -14,11 +14,26 @@ export class CollectionItem {
     }
   }
 
-  #setConfig(defaultCfg: { [key: string]: unknown }) {
-    for (let key in defaultCfg) {
-      if (this.cfg[key] === undefined) {
-        this.cfg[key] = defaultCfg[key];
+  #setConfig(defaultCfg: { [key: string]: unknown } = {}) {
+    try {
+      const attr = this.selector.replaceAll(/[\[.+\]]/gi, "");
+      const rawCfg = this.instance?.getAttribute(attr);
+
+      if (!rawCfg) {
+        this.cfg = defaultCfg;
+        return;
       }
+
+      this.cfg = JSON.parse(rawCfg);
+
+      for (let key in defaultCfg) {
+        if (this.cfg[key] === undefined) {
+          this.cfg[key] = defaultCfg[key];
+        }
+      }
+    }
+    catch {
+      this.cfg = defaultCfg;
     }
   }
 }
