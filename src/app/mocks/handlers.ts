@@ -1,4 +1,4 @@
-import {API} from "@/shared/lib/conts";
+import {API} from "@/shared/lib/consts";
 import {createMock} from "@/app/mocks/lib";
 
 export const handlers = [
